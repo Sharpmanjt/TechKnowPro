@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Profile</title>
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -87,12 +87,14 @@
                     <td class="auto-style3">*First Name:</td>
                     <td>
                         <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtFirstName" Display="Dynamic" ErrorMessage="First name must contain only alphabet characters!" ForeColor="Red" ValidationExpression="^[a-zA-Z]+$"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style3">*Last Name:</td>
                     <td>
                         <asp:TextBox ID="txtLastName" runat="server" style="height: 22px"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="regExLastName" runat="server" ErrorMessage="Last Name must only contain alphabet characters!" ControlToValidate="txtLastName" Display="Dynamic" ForeColor="Red" ValidationExpression="^[a-zA-Z]+$"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>

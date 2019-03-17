@@ -21,35 +21,27 @@ namespace TechKnowPro
                 Server.Transfer("Home.aspx");
             }
 
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
+            /*
+             * testing if sql command necessary
+             * SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "SELECT * FROM [Surveys] WHERE Username = '" + Session["Username"].ToString() + "'";
+            cmd.CommandText = "SELECT * FROM [User] WHERE Username = '" + Session["Username"].ToString() + "'";
             cmd.ExecuteNonQuery();
             SqlDataReader sdr = cmd.ExecuteReader();
-
+            
             if (sdr.Read())
             {
                 lblCustomerID.Text = sdr["Username"].ToString();
             }
-            
-            con.Close();
+            con.Close();*/
+            lblCustomerID.Text = Session["Username"].ToString();
+
         }
         
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            string contactMe = "0";
-
-            if (chkContact.Checked == true)
-            {               
-                contactMe = "1";
-            }
-            else
-            {                
-                contactMe = "0";
-            }
-
             if (Page.IsValid)
             {
                 int surveynum = 1;
@@ -68,27 +60,13 @@ namespace TechKnowPro
                     surveynum = (1 + Convert.ToInt32(sdr["survey_num"]));
                 }
                 con.Close();
-                SqlConnection con2 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
-                SqlCommand cmd2 = con2.CreateCommand();
+                
 
-                con2.Open();
-                cmd2.CommandType = System.Data.CommandType.Text;
-                cmd2.CommandText = "insert into [Surveys](survey_num, username, incident_num, response_time, technician_efficiency, problem_resolution, additional_comments, contact_further, contact_preference) " +
-                    "values ('" + surveynum +
-                    "','" + Session["Username"].ToString() +
-                    "','" + Convert.ToInt32(listIncidents.SelectedValue) +
-                    "','" + radListResponse.SelectedValue +
-                    "','" + radListTech.SelectedValue +
-                    "','" + radListResolution.SelectedValue +
-                    "','" + txtAddComments.Text +
-                    "','" + contactMe +
-                    "','" + radListContact.SelectedValue + "')";
-                cmd2.ExecuteNonQuery();
-
-                con2.Close();
+                Survey newsurvey = new Survey(surveynum, Convert.ToInt32(listIncidents.SelectedValue), Session["Username"].ToString(), radListResponse.SelectedValue, radListTech.SelectedValue, radListResolution.SelectedValue, txtAddComments.Text, chkContact.Checked, radListContact.SelectedValue);
+                newsurvey.addSurveyToDatabase();
 
                 Session["survey_num"] = surveynum;
-                Server.Transfer("ConfirmSurvey.aspx");
+                Response.Redirect("ConfirmSurvey.aspx");
             }
         }
 
