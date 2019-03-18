@@ -17,14 +17,10 @@
                     <asp:Label ID="lblUsername" runat="server" Text="Username"></asp:Label>
                     <asp:TextBox ID="txtUsername" class="form-control" runat="server"></asp:TextBox>
                 </div>
-                 <div class="col" style="margin:5px">
-                    <asp:Label ID="lblPostalCode" runat="server" Text="Postal Code"></asp:Label>
-                    <asp:TextBox ID="txtPostalCode" runat="server" class="form-control"></asp:TextBox>
-                </div>
                 <div class="col" style="margin:5px">
                     <asp:Label ID="lblSecretQuestion" runat="server" Text="Secret Question"></asp:Label>
                     <asp:DropDownList ID="DropDownListSecretQuestion" class=" form-control" runat="server">
-                        <asp:ListItem Value="What is your favourite color?">What is your favourite color?</asp:ListItem>
+                        <asp:ListItem Value="What is your favourite colour?">What is your favourite colour?</asp:ListItem>
                         <asp:ListItem Value="What was the name of your first pet?">What was the name of your first pet?</asp:ListItem>
                         <asp:ListItem Value="What is your dream job?">What is your dream job?</asp:ListItem>
                         <asp:ListItem Value="Who was your childhood best friend?">Who was your childhood best friend?</asp:ListItem>
@@ -36,6 +32,8 @@
                 </div>
                 <div class="col" style="margin:5px">
                     <asp:Button ID="btnVerifyInformation" class="btn btn-outline-primary" style="margin:5px" runat="server" Text="Verify Information" Visible="True" OnClick="btnVerifyInformation_Click" />
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="btnCancel" class="btn btn-primary" style="margin:5px" runat="server" Text="Cancel" Visible="True" OnClick="btnCancel_Click" />
                 </div>
                 <div class="col" style="margin:5px">
                     <asp:Label ID="lblNewPassword" runat="server" Text="New Password" Visible="False"></asp:Label>

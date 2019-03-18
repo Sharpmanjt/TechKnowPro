@@ -109,9 +109,9 @@
             <div id="groupMembers" class="card border-primary mb-3" style="width: 25rem">
                 <div class="card-header">GROUP MEMBERS</div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">1. Saad Khan</li>
+                    <li class="list-group-item">1. Saad Khan - 101157307</li>
                     <li class="list-group-item">2. Veronyque Lemieux - 101106553</li>
-                    <li class="list-group-item">3. Ian Miranda</li>
+                    <li class="list-group-item">3. Ian Miranda - 101163981</li>
                     <li class="list-group-item">4. Jeremy Thibeau - 101157911</li>
                 </ul>
             </div>

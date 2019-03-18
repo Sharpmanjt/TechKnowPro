@@ -38,10 +38,18 @@ namespace TechKnowPro
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "INSERT INTO [Survey] (survey_id, incident_id, username, response_time, technician_efficiency, problem_resolution, additional_comments, contact_further, contact_preference)" +
+            cmd.CommandText = "INSERT INTO [Surveys] (survey_num, incident_num, username, response_time, technician_efficiency, problem_resolution, additional_comments, contact_further, contact_preference)" +
                             " values('" + survey_id + "','" +incident_id + "','" +username + "','" +response_time + "','" +technician_efficiency + "','" +problem_resolution + "','" +additional_comments + "','" +contact_further + "','" +contact_preference+ "')";
             cmd.ExecuteNonQuery();
             con.Close();
+            SqlConnection con2 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
+            con2.Open();
+            SqlCommand cmd2 = con2.CreateCommand();
+            cmd2.CommandType = System.Data.CommandType.Text;
+            cmd2.CommandText = "UPDATE [Incidents] SET Survey_Submitted = 'true' WHERE incident_num ='"+incident_id+"'";
+            cmd2.ExecuteNonQuery();
+            con2.Close();
+
         }
     
     }

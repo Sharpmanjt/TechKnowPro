@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Create Incident</title>
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -66,7 +66,7 @@
 
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Username], CONCAT(Last_Name, ', ', First_Name) as Names FROM [User] where NOT User_Type='admin' AND NOT User_Type = 'tech'"></asp:SqlDataSource>
 
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Please select a customer."></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Please select a customer." ForeColor="Red"></asp:RequiredFieldValidator>
 
                 </td>
 
@@ -144,14 +144,14 @@
             <tr>
                 <td>
 
-                    <asp:RequiredFieldValidator ID="descReq" runat="server" ControlToValidate="txtDescription" ErrorMessage="Description required."></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="descReq" runat="server" ControlToValidate="txtDescription" ErrorMessage="Description required." ForeColor="Red"></asp:RequiredFieldValidator>
 
                 </td>
             </tr>
             <tr>
                 <td>
 
-                    <asp:Label ID="lblSuccess" runat="server" Text="Incident created."></asp:Label>
+                    <asp:Label ID="lblSuccess" runat="server" Text="Incident created." ForeColor="Red"></asp:Label>
 
                 </td>
             </tr>
@@ -173,7 +173,7 @@
                 </td>
                 <td class="auto-style5">
                     
-                    <asp:Button ID="btnHome" class="btn btn-outline-primary" style="margin:5px" runat="server" Text="Home" CssClass="auto-style7" CausesValidation="False" OnClick="btnHome_Click" />
+                    <asp:Button ID="btnHome" class="btn btn-outline-primary" style="margin:5px" runat="server" Text="Home" CausesValidation="False" OnClick="btnHome_Click" />
 
                 </td>
             </tr>

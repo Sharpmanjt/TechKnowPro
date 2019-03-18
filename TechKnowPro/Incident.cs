@@ -31,7 +31,7 @@ namespace TechKnowPro
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "insert into [Incidents](Incident_Num,Date_Time,Status,Contact_Method,Username,Description) values('" + incidentNum + "','" + date + "','" + status + "','" + contact + "','" + username + "','" + description + "')";
+            cmd.CommandText = "insert into [Incidents](Incident_Num,Date_Time,Status,Contact_Method,Username,Description,Survey_Submitted) values('" + incidentNum + "','" + date + "','" + status + "','" + contact + "','" + username + "','" + description + "', 'false')";
             cmd.ExecuteNonQuery();
             con.Close();
         }
