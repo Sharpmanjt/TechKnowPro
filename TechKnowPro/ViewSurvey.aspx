@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>View Survey</title>
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -56,20 +56,15 @@
                     </tr>
                 </table>
         <asp:Panel runat="server" ID="selectCustomerPanel" Visible="false">
-               
-                <p>
                     <asp:Label runat="server" ID="surveyListingLabel">Survey Listing</asp:Label>
                     <br/>
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server"  ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [incident_num] FROM [Surveys] "></asp:SqlDataSource>
                     <asp:ListBox ID="ListBox1" runat="server" Width="546px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" >
                         <asp:ListItem Enabled="False">Select a submitted survey</asp:ListItem>
                     </asp:ListBox>
-
-                </p>
-                <p>
+            <br />
+            <br />
                     <asp:Button ID="btnRetrieveSurveyInformation" class="btn btn-outline-primary" runat="server" Text="Retrieve Survey Information" CausesValidation="False" OnClick="retrieveSurveyInformation" /> 
-
-                </p>
         </asp:Panel>
         <asp:Panel runat="server" ID="surveyInfo" Visible="false">
                     <asp:Table ID="customerRatingTable" runat="server" Height="158px" Width="899px" CssClass="auto-style3">
@@ -97,16 +92,7 @@
                                   <asp:Label ID="lblContactMethod" runat="server"></asp:Label>
                             </asp:TableCell>
                         </asp:TableRow>
-
-                
-
-
                     </asp:Table>
-
-                 <p>
-                     &nbsp;</p>
-                  <br />
-                    <br />
                 Additional Information:<br />
                             <asp:Panel ID="Panel2" runat="server" CssClass="auto-style3" Height="230px" Width="450px" BorderStyle="Solid">
                                 <asp:Label ID="lblAdditionalInfo" runat="server"></asp:Label>

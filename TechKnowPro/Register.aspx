@@ -17,10 +17,12 @@
                     <div class="col" style="margin:5px">
                         <asp:Label ID="lblFirstName" runat="server" Text="First Name*"></asp:Label>
                         <asp:TextBox ID="txtFirstName" class="form-control" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="regExFirstName" runat="server" ErrorMessage="First Name must only contain alphabet characters!" ControlToValidate="txtFirstName" Display="Dynamic" ForeColor="Red" ValidationExpression="^[a-zA-Z]+$"></asp:RegularExpressionValidator>
                     </div>
                     <div class="col" style="margin:5px">
                         <asp:Label ID="lblLastName" runat="server" Text="Last Name*"></asp:Label>
                         <asp:TextBox ID="txtLastName" class="form-control" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="regExLastName" runat="server" ErrorMessage="Last Name must only contain alphabet characters!" ControlToValidate="txtLastName" Display="Dynamic" ForeColor="Red" ValidationExpression="^[a-zA-Z]+$"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <div class="form-group" style="margin:5px">
