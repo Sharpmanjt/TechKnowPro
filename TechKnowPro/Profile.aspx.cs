@@ -68,7 +68,7 @@ namespace TechKnowPro
             if (Page.IsValid)
             {
                 string username = txtUsername.Text;
-                if (string.IsNullOrEmpty(txtConfirmPass.Text))
+                if (!string.IsNullOrEmpty(txtConfirmPass.Text))
                 {
                     string password = txtConfirmPass.Text;
                 }
@@ -81,11 +81,12 @@ namespace TechKnowPro
 
                 cmd.CommandType = System.Data.CommandType.Text;
 
-                if (string.IsNullOrEmpty(txtConfirmPass.Text))
+                if (!string.IsNullOrEmpty(txtConfirmPass.Text))
                 {
                     string password = txtConfirmPass.Text;
                     cmd.CommandText = "UPDATE [User] SET Password ='" + BCrypt.Net.BCrypt.HashPassword(password) +
-                        "' WHERE Username ='" + Session["Username"].ToString() + "'"; 
+                        "' WHERE Username ='" + Session["Username"].ToString() + "'";
+                    cmd.ExecuteNonQuery();
 
                 }
                 cmd.CommandText = "UPDATE [User] SET " +

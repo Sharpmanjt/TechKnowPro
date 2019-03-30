@@ -22,8 +22,6 @@ namespace TechKnowPro
             string message = "";
             if (string.IsNullOrEmpty(this.txtUsername.Text.Trim()))
                 message = message + "Username<br>";
-            if (string.IsNullOrEmpty(this.txtPostalCode.Text.Trim()))
-                message = message + "Postal Code<br>";
             if (string.IsNullOrEmpty(this.DropDownListSecretQuestion.Text.Trim()))
                 message = message + "Secret Question<br>";
             if (string.IsNullOrEmpty(this.txtSecretAnswer.Text.Trim()))
@@ -38,14 +36,13 @@ namespace TechKnowPro
         protected void btnVerifyInformation_Click(object sender, EventArgs e)
         {
             string userName = txtUsername.Text.ToLower();
-            string postalCode = txtPostalCode.Text;
             string secretQuestion = DropDownListSecretQuestion.SelectedItem.Text;
             string secretAnswer = txtSecretAnswer.Text.ToLower();
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "select * from [User]" + " where Username='" + userName + "' and Postal_Code ='" + postalCode + "' and Secret_Question ='" + secretQuestion + "' and Secret_Answer='" + secretAnswer + "'";
+            cmd.CommandText = "select * from [User]" + " where Username='" + userName + "' and Secret_Question='" + secretQuestion + "' and Secret_Answer='"+secretAnswer+"'";
             cmd.ExecuteNonQuery();
             SqlDataReader sdr = cmd.ExecuteReader();
 
@@ -62,6 +59,11 @@ namespace TechKnowPro
             {
                 // if the user input doesn't match previous entries
                 lblResetPasswordMessage.Text = "Information entered is incorrect - please verify!";
+                lblNewPassword.Visible = false;
+                txtNewPassword.Visible = false;
+                lblConfirmPassword.Visible = false;
+                txtConfirmPassword.Visible = false;
+                btnResetPassword.Visible = false;
             }
             con.Close();
         }
@@ -79,6 +81,11 @@ namespace TechKnowPro
             cmd2.ExecuteNonQuery();
             lblResetPasswordMessage.Text = "Password successfully changed! Click <a href='http://localhost:8080/Login.aspx'>here</a> to login!";
             con.Close();
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
         }
     }
 }
